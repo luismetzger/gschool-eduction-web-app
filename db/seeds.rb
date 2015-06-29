@@ -5,5 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
- User.create(email: 'sandeep1.campbell@gmail.com', password: 'test123',password_confirmation: 'test123')
- User.create(email: 'sandeep2.campbell@gmail.com', password: 'test123',password_confirmation: 'test123')
+ User.create(email: 'testuser1@gmail.com', password: 'test123',password_confirmation: 'test123')
+ User.create(email: 'testuser2@gmail.com', password: 'test123',password_confirmation: 'test123')
+ Plan.create!(:name => "Basic", :price => 5, :description => "5")
+ Plan.create!(:name => "Pro", :price => 10, :description => "10")
+ Plan.create!(:name => "Advance", :price => 49, :description => "49")

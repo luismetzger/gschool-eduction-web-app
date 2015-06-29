@@ -4,7 +4,10 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+# gem 'mysql2'
+
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'stripe'
 
 # Use unicorn as the app server
 # gem 'unicorn'

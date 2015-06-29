@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   
+  resources :subscriptions
+  resources :plans
+  
   root 'home#index'
+
+  resources :password_resets
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
