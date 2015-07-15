@@ -1,57 +1,244 @@
-<div class="index">
-      <div class="row">
-        <div class="container">
-          <div class="col-md-12"> 
-<div Style="margin:10px;width:400px;padding-top:50px;">
-<h1>Signing up for "<%= @subscription.plan.name %>"</h1>
-<p>Includes <strong><%= @subscription.plan.description %> </strong> for only <strong><%= number_to_currency @subscription.plan.price %></strong> per month!</p>
+<div class="index signup-form">
+                <div class="row">
+                    <div class="container header_banner">
+                        <h1>Sign up for gSchool</h1>
+                        <div class="visible-xs">
+                            <br />
+                            <br />
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1 round-corners">
+                            <a href="#" class="list-group-item active">You'll be starting a <%= @subscription.plan.name %> account free trial</a>
+                            <%= form_for @subscription do |f| %>
+                              <% if @subscription.errors.any? %>
+                                <div class="error_messages">
+                                  <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+                                  <ul class="pull-left">
+                                  <% @subscription.errors.full_messages.each do |msg| %>
+                                    <li ><%= msg %></li>
+                                  <% end %>
+                                  </ul>
+                                </div>
+                                <br />
+                              <% end %>
 
-<%= form_for @subscription do |f| %>
-  <% if @subscription.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
-      <ul>
-      <% @subscription.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                              <%= f.hidden_field :plan_id %>
 
-  <%= f.hidden_field :plan_id %>
+                              <%= f.hidden_field :stripe_card_token %>
+                            <div class="form-container">
+                                <h2>
+                                    <span>1</span>
+                                    Your payment options
+                                </h2>
+                                <br />
+                                <div class="clear"></div>
+                                <div class="col-sm-12 col-md-3 select-payment selected-payment">
+                                    <input type="radio" name="payment" checked />
+                                    Monthly - <%= number_to_currency @subscription.plan.price %>
+                                </div>
+                                <div class="col-sm-12 col-md-6 select-payment">
+                                    <input type="radio" name="payment" />
+                                    Annually <span>- $200</span>
+                                    <span class="badge badge-primary">FREE GIFT</span>
+                                </div>
+                                <p class="col-xs-12">
+                                    Don't worry! You won't be charged until the end of your trial.
+                                </p>
+                                <div class="clear"></div>
+                                <hr />
+                                <h2>
+                                    <span>2</span>
+                                    Your Information
+                                </h2>
+                                <br />
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <input type="text" class="form-control" placeholder="First Name" />
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <input type="text" class="form-control" placeholder="Last Name" />
+                                </div>
+                                <div class="visible-sm visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <select class="form-control">
+                                        <option selected>Age</option>
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                    </select>
+                                </div>
+                                <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-12">
+                                    <input type="text" class="form-control" placeholder="Company Name" />
+                                </div>
+                                <div class="clear"></div>
+                                <hr />
+                                <h2>
+                                    <span>3</span>
+                                    Account Details
+                                </h2>
+                                <br />
+                                <div class="col-xs-12 col-sm-6">
+                                    <!-- <input type="text" class="form-control" placeholder="Username" /> -->
+                                    <%= f.text_field :email, :class=>"form-control", :placeholder=>"Username"  %>
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <input type="text" class="form-control", placeholder="Password" />
+                                </div>
+                                <div class="clear"></div>
+                                <hr />
+                                <h2>
+                                    <span>4</span>
+                                    Payment Information
+                                </h2>
+                                <p class="col-xs-12">
+                                    Your card won't be charged for 14 days. If you cancel before then, your card won't be charged.
+                                </p>
+                                <div class="cc-select cc-1">
+                                    <input type="radio" name="cc" checked />
+                                    <!-- <img src="http://placehold.it/34X24" /> -->
+                                    <%= image_tag asset_path('icon-visa.png') %>
+                                    <!-- <img src="http://placehold.it/34X24" /> -->
+                                    <%= image_tag asset_path('icon-mastercard.png') %>
+                                    <!-- <img src="http://placehold.it/34X24" /> -->
+                                    <%= image_tag asset_path('icon-amex.png') %>
+                                </div>
+                                <div class="cc-select cc-2">
+                                    <input type="radio" name="cc" />
+                                    <!-- <img src="http://placehold.it/34X24" /> -->
+                                    <%= image_tag asset_path('icon-paypal.png') %>
+                                </div>
+                                <div class="cc-select cc-3">
+                                    <input type="radio" name="cc" />
+                                    <!-- <img src="http://placehold.it/34X24" /> -->
+                                    <%= image_tag asset_path('icon-bitcoin.png') %>
+                                </div>
+                                <div class="clear"></div>
+                                <br />
+                                <div class="payment-tab payment-tab-show" data-tab="cc-1">
+                                  <% if @subscription.stripe_card_token.present? %>
+                                        Credit card has been provided.
+                                  <% else %>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <!-- <input type="text" class="form-control" placeholder="Card Number" /> -->
+                                        <%= text_field_tag :card_number, nil, name: nil, :class=>"form-control", :placeholder=>"Card Number"  %>
 
-  <%= f.hidden_field :stripe_card_token %>
+                                    </div>
+                                    <div class="visible-sm visible-xs">
+                                        <div class="clear"></div>
+                                        <br />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <input type="text" class="form-control" placeholder="Zip" />
+                                    </div>
+                                    <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <!-- <input type="text" class="form-control" placeholder="CVV" /> -->
+                                        <%= text_field_tag :card_code, nil, name: nil, :class=>"form-control", :placeholder=>"CVV"  %>
 
-  <div class="field">
-    <%= f.label :email %><br /><br />
-    <%= f.text_field :email %>
-  </div>
-  <% if @subscription.stripe_card_token.present? %>
-    Credit card has been provided.
-  <% else %>
-    <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %><br /><br />
-      <%= text_field_tag :card_number, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %><br /><br />
-      <%= text_field_tag :card_code, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %><br /><br />
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %><br /><br />
-    </div>
-  <% end %>
-  <div id="stripe_error">
-    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-  </div>
-  <div class="actions">
-    <%= f.submit "Subscribe" %>
-  </div>
-<% end %>
-</div>
-</div>
-</div>
-</div>
-</div>
+                                    </div>
+                                    <div class="col-xs-1 hidden-sm hidden-xs">
+                                        <i class="fa fa-question-circle"></i>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <br />
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <!-- <select>
+                                            <option>1- January</option>
+                                            <option>2- January</option>
+                                            <option>3- January</option>
+                                        </select> -->
+                                        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+                                        
+                                    </div>
+                                    <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                       <!--  <select>
+                                            <option>2015</option>
+                                            <option>2015</option>
+                                            <option>2015</option>
+                                        </select> -->
+                                        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+                                    </div>
+                                   <% end %> 
+                                </div>
+                                <div class="payment-tab" data-tab="cc-2">
+                                    <h4>
+                                        Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                    </h4>
+                                    <p class="col-xs-12">
+                                        We can accept a PO or paying by invoice if you have a large group. Please email us and we'll be happy to help.
+                                    </p>
+                                </div>
+                                <div class="payment-tab" data-tab="cc-3">
+                                    <h4>
+                                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                    </h4>
+                                    <p class="col-xs-12">
+                                        We can accept a PO or paying by invoice if you have a large group. Please email us and we'll be happy to help.
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                                <br />
+                                <p class="col-xs-12">
+                                    We can accept a PO or paying by invoice if you have a large group. Please email us and we'll be happy to help.
+                                </p>
+                                <div class="clear"></div>
+                                <hr />
+                                <!-- <button type="button" class="btn btn-lg btn-primary pull-left">Join Us Now</button> -->
+                                <%= f.submit "Join Us Now",:class => "btn btn-lg btn-primary pull-left" %>
+                                <div class="clear"></div>
+                                <p>
+                                    <!-- Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. -->
+                                    When you click Join gSchool your 14-day trial will begin and you won't be charged $25.00 until July 29, 2015. You are also agreeing to our <a href="#">Terms of Service</a> and our <a href="#">Privacy Policy</a>. 
+                                </p>
+                                <div class="clear"></div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>        
+            </div>
+             <script>
+            $(document).ready(function () {
+                $(".cc-select").click(function () {
+                    $(this).children("input").prop("checked", "checked");
+                    $(".payment-tab").removeClass("payment-tab-show");
+                    if ($(this).hasClass("cc-1")) {
+                        $("[data-tab='cc-1']").addClass("payment-tab-show");
+                    } else if ($(this).hasClass("cc-2")) {
+                        $("[data-tab='cc-2']").addClass("payment-tab-show");
+                    } else if ($(this).hasClass("cc-3")) {
+                        $("[data-tab='cc-3']").addClass("payment-tab-show");
+                    }
+                });
+                $(".select-payment").click(function () {
+                    $(".select-payment").removeClass("selected-payment");
+                    $(this).addClass("selected-payment");
+                    $(this).find("input").prop("checked", "checked");
+                });
+            });
+
+
+        </script>

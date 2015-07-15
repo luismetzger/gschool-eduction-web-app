@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    <head>
         <meta charset="utf-8">
 
         <!-------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@
         <%= javascript_include_tag 'site.min.js' %>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
        <%= stylesheet_link_tag 'site.min.css'%>
-     <%= stylesheet_link_tag 'bootflat/bootflat.css',"animate.css" %>
+     <%= stylesheet_link_tag "bootflat/bootflat.css","animate.css" %>
      
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -56,13 +56,26 @@
       	<%= yield %>
         <%= render "home/footer" %>
     </div>
-    <!-- <script src="video.js"></script> -->
-    <%= javascript_include_tag 'video.js' %>
+        <%= javascript_include_tag 'video.js' %>
         <script>
             videojs.options.flash.swf = "/video-js.swf"
         </script>
         <script>
             $(document).ready(function () {
+                $("video").on("pause", function () {
+                    setTimeout(function () {
+                        if ($("video").get(0).paused) {
+                            $(".video-js").removeClass("showVideo").hide();
+                            $(".banner-data").fadeIn();
+                            $(".index").removeClass("video-up");
+                        }
+                    }, 500);
+                });
+                $("video").on("ended", function () {
+                    $(".video-js").removeClass("showVideo").hide();
+                    $(".banner-data").fadeIn();
+                    $(".index").removeClass("video-up");
+                });
                 $("#show-video").click(function () {
                     var i = 0;
                     $(".banner-data").fadeOut(function () {
@@ -70,7 +83,7 @@
                         if (i === 2) {
                             $(".video-js").show(function () {
                                 $(".video-js").addClass("showVideo");
-                                    $("video").trigger("play");
+                                $("video").trigger("play");
                             });
                         }
                     });
