@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   has_secure_password
+
+  has_one :subscription
+  has_one :plan, :through => :subscription
+  
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX 
+
 
   def send_password_reset
     generate_token(:password_reset_token)

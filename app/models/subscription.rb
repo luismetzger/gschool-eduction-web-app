@@ -2,8 +2,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :plan
   validates_presence_of :plan_id
   validates_presence_of :email
-  
-  attr_accessor :stripe_card_token
+
+  attr_accessor :stripe_card_token,:first_name,:last_name,:company_name,:age
   
   def save_with_payment
     if valid?
@@ -12,7 +12,7 @@ class Subscription < ActiveRecord::Base
       self.stripe_customer_token = customer.id
       Stripe::Charge.create customer: customer.id,
                           amount: 50,
-                          description: "sandeep",
+                          description: "basic plan",
                           currency: 'usd'
 
       save!

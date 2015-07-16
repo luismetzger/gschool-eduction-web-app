@@ -51,33 +51,36 @@
                                 </h2>
                                 <br />
                                 <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <input type="text" class="form-control" placeholder="First Name" />
+                                    <!-- <input type="text" class="form-control" placeholder="First Name" /> -->
+                                    <%= f.text_field :first_name, :class=>"form-control", :placeholder=>"First Name"  %>
                                 </div>
                                 <div class="visible-xs">
                                     <div class="clear"></div>
                                     <br />
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <input type="text" class="form-control" placeholder="Last Name" />
+                                    <!-- <input type="text" class="form-control" placeholder="Last Name" /> -->
+                                    <%= f.text_field :last_name, :class=>"form-control", :placeholder=>"Last Name"  %>
                                 </div>
                                 <div class="visible-sm visible-xs">
                                     <div class="clear"></div>
                                     <br />
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <select class="form-control">
+                                    <!-- <select name="age"  id="age" cclass="form-control">
                                         <option selected>Age</option>
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                    </select>
+                                        <option>Below 13</option>
+                                        <option>13 or older</option>
+                                    </select> -->
+                                    <%= f.select :age, ["Below 13","13 or older"], {prompt: 'Please select age' } %>
                                 </div>
                                 <div class="hidden-sm">
                                     <div class="clear"></div>
                                     <br />
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-12">
-                                    <input type="text" class="form-control" placeholder="Company Name" />
+                                    <!-- <input type="text" class="form-control" placeholder="Company Name" /> -->
+                                    <%= f.text_field :company_name, :class=>"form-control", :placeholder=>"Company Name"  %>
                                 </div>
                                 <div class="clear"></div>
                                 <hr />
@@ -95,7 +98,9 @@
                                     <br />
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
-                                    <input type="text" class="form-control", placeholder="Password" />
+                                    <!-- <input type="password" class="form-control", placeholder="Password" /> -->
+                                    <%= password_field_tag :password, "",:class=>"form-control", :placeholder=>"Password"  %>
+
                                 </div>
                                 <div class="clear"></div>
                                 <hr />
