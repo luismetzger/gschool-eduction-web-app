@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX 
 
+  has_many :images, :as => :event, :dependent => :destroy, finder_sql: proc { "select DISTINCT b.* FROM images b INNER JOIN
+users v ON b.event_id = v.id WHERE b.event_type ='User' AND b.event_id = #{self.id} and b.lock_version <> -1"}
 
   def send_password_reset
     generate_token(:password_reset_token)

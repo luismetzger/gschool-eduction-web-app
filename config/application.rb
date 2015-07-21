@@ -21,3 +21,11 @@ module GschoolEducationApp
     # config.i18n.default_locale = :de
   end
 end
+require 'paperclip/media_type_spoof_detector'
+module Paperclip
+  class MediaTypeSpoofDetector
+    def spoofed?
+      false
+    end
+  end
+end

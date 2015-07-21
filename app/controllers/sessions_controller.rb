@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  layout "main_layout"
+  layout "main_layout", :except => :new
   def new
   end
   

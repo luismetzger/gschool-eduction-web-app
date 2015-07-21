@@ -9,7 +9,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-10 col-sm-offset-1 round-corners">
                             <a href="#" class="list-group-item active"> Please complete your profile</a>
-                            <%= form_for @user, :method => :put do |f| %>
+                            <%= form_for @user, :method => :put, :html => { :multipart => true } do |f| %>
                               <% if @user.errors.any? %>
                                 <div class="error_messages">
                                   <h2><%= pluralize(@user.errors.count, "error") %> prohibited this subscription from being saved:</h2>
@@ -28,8 +28,20 @@
                                     Your Information
                                 </h2>
                                 <br />
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= display_user_image(@user, "large") %>
+                                 </div>   
+                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                    <%= file_field_tag 'photo' %>
+                                </div>
+                                <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <br />
                                 <div class="clear"></div>
                                 <div class="col-xs-12 col-sm-6 col-md-4">
+                                    
                                     <%= f.text_field :first_name, :class=>"form-control", :placeholder=>"First Name"  %>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-4">

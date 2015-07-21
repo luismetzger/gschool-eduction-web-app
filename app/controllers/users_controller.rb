@@ -23,6 +23,13 @@ class UsersController < ApplicationController
     params.permit!
     @user = current_user
     flash[:notice] = @user.update_attributes(params[:user]) ? "Profile Successfully updated" : "Problem with profile update"
+    images = @user.images
+    if images.length > 0
+      @image = images[0]
+      @image.update_attributes(:photo => params[:photo]) if params[:photo]
+    else
+      @image = Image.create(:photo => params[:photo], :event_type => @user.class.to_s, :event_id => @user.id) if params[:photo]
+    end
     render "user_profile"
   end
     
