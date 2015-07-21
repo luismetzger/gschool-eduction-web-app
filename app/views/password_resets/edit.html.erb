@@ -1,33 +1,58 @@
-<div class="index">
-      <div class="row">
-        <div class="container">
-          <div class="col-md-12"> 
-<div Style="margin:10px;width:400px;padding-top:50px;">
-<h1>Reset Password</h1>
-
-<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :password %><br /><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br /><br />
-    <%= f.password_field :password_confirmation %><br /><br />
-  </div>
-  <div class="actions"><%= f.submit "Update Password" %></div>
-<% end %>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="index signup-form">
+                <div class="row">
+                    <div class="container header_banner">
+                        <h1>Reset Password for gSchool</h1>
+                        <div class="visible-xs">
+                            <br />
+                            <br />
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1 round-corners">
+                            <a href="#" class="list-group-item active"></a>
+                            <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+                             <% if @user.errors.any? %>
+                                <div class="error_messages">
+                                  <h2>Form is invalid</h2>
+                                  <ul>
+                                    <% for message in @user.errors.full_messages %>
+                                      <li><%= message %></li>
+                                    <% end %>
+                                  </ul>
+                                </div>
+                              <% end %>
+                            <div class="form-container">
+                                <h2>
+                                    <!-- <span>2</span> -->
+                                    Enter password and confirm password to reset your password
+                                </h2>
+                                <br />
+                                <div class="col-xs-12 col-sm-6">
+                                    <!-- <input type="text" class="form-control" placeholder="First Name" /> -->
+                                    <%= f.password_field :password,:class=>"form-control", :placeholder=>"Password" %>
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <!-- <input type="text" class="form-control" placeholder="Company Name" /> -->
+                                    <%= f.password_field :password_confirmation,:class=>"form-control", :placeholder=>"Password Confirmation" %>
+                                </div>
+                                <div class="clear"></div>
+                                <hr />
+                                <div class="col-xs-12 col-sm-12">
+                                  <%= submit_tag "Update Password",:class => "btn btn-lg btn-primary pull-left" %>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>        
+            </div>

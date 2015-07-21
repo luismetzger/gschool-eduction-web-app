@@ -1,0 +1,186 @@
+<div class="index signup-form">
+                <div class="row">
+                    <div class="container header_banner">
+                        <h3><%= flash[:notice] %></h3>
+                        <h1><%= current_user.first_name if current_user %> Profile</h1>
+                        <div class="visible-xs">
+                            <br />
+                            <br />
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1 round-corners">
+                            <a href="#" class="list-group-item active"> Please complete your profile</a>
+                            <%= form_for @user, :method => :put do |f| %>
+                              <% if @user.errors.any? %>
+                                <div class="error_messages">
+                                  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+                                  <ul class="pull-left">
+                                  <% @user.errors.full_messages.each do |msg| %>
+                                    <li ><%= msg %></li>
+                                  <% end %>
+                                  </ul>
+                                </div>
+                                <br />
+                              <% end %>
+
+                            <div class="form-container">
+                                <h2>
+                                    <span>1</span>
+                                    Your Information
+                                </h2>
+                                <br />
+                                <div class="clear"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :first_name, :class=>"form-control", :placeholder=>"First Name"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :last_name, :class=>"form-control", :placeholder=>"Last Name"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :email, :class=>"form-control", :placeholder=>"Email"  %>
+                                </div>
+                                 <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-12">
+                                    <!-- <input type="text" class="form-control" placeholder="Company Name" /> -->
+                                    <%= f.text_area :about_you, :class=>"form-control", :placeholder=>"About you"  %>
+                                </div>
+                                 <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.select :country, ["USA","UK","Australia","China","South Africa"], {prompt: 'Please select country' } %>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :location, :class=>"form-control", :placeholder=>"Location"  %>
+                                </div>
+                                <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-12">
+                                    <%= f.text_area :billing_address, :class=>"form-control", :placeholder=>"Billing Address"  %>
+                                </div>
+                                <div class="clear"></div>
+                                <hr />
+                                <h2>
+                                    <span>2</span>
+                                    Education/Professional detail
+                                </h2>
+                                <br />
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                     <%= f.select :highest_education, ["Doctrate","Medical","Post graduate","Graduate","High School"], {prompt: 'Highest Level of Education' } %>
+                                </div>
+                                
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.select :open_for_work, ["Yes","No"], {prompt: 'I am looking for work' } %>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :school_name, :class=>"form-control", :placeholder=>"School Name"  %>
+                                </div>
+                                 <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :company_name, :class=>"form-control", :placeholder=>"Company Name"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.text_field :job_title, :class=>"form-control", :placeholder=>"Job Title"  %>
+                                </div>
+                                <div class="clear"></div>
+                                <hr />
+                                <h2>
+                                    <span>3</span>
+                                    Social Connect 
+                                </h2>
+                                <br />
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :github_account, :class=>"form-control", :placeholder=>"Github connect"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :dribble_account, :class=>"form-control", :placeholder=>"Dribble account"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :linkedin_account, :class=>"form-control", :placeholder=>"Linkedin account"  %>
+                                </div>
+                                 <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :twitter_account, :class=>"form-control", :placeholder=>"Twitter account"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :facebook_account, :class=>"form-control", :placeholder=>"Facebook account"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :google_account, :class=>"form-control", :placeholder=>"Google account"  %>
+                                </div>
+                                 <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <%= f.text_field :reddit_account, :class=>"form-control", :placeholder=>"Reditt account"  %>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <%= f.text_field :website_url, :class=>"form-control", :placeholder=>"Website URL"  %>
+                                </div>
+                                <div class="clear"></div>
+                                <hr />
+                                
+                                <div class="clear"></div>
+                                <br />
+                               
+                                <div class="clear"></div>
+                                <hr />
+                                <!-- <button type="button" class="btn btn-lg btn-primary pull-left">Join Us Now</button> -->
+                                <%= f.submit "Update Profile",:class => "btn btn-lg btn-primary pull-left" %>
+                                
+                                <div class="clear"></div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>        
+            </div>
+             <script>
+            $(document).ready(function () {
+                $(".cc-select").click(function () {
+                    $(this).children("input").prop("checked", "checked");
+                    $(".payment-tab").removeClass("payment-tab-show");
+                    if ($(this).hasClass("cc-1")) {
+                        $("[data-tab='cc-1']").addClass("payment-tab-show");
+                    } else if ($(this).hasClass("cc-2")) {
+                        $("[data-tab='cc-2']").addClass("payment-tab-show");
+                    } else if ($(this).hasClass("cc-3")) {
+                        $("[data-tab='cc-3']").addClass("payment-tab-show");
+                    }
+                });
+                $(".select-payment").click(function () {
+                    $(".select-payment").removeClass("selected-payment");
+                    $(this).addClass("selected-payment");
+                    $(this).find("input").prop("checked", "checked");
+                });
+            });
+
+
+        </script>
