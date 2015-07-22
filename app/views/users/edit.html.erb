@@ -2,13 +2,13 @@
                 <div class="row">
                     <div class="container header_banner">
                         <h3><%= flash[:notice] %></h3>
-                        <h1><%= current_user.first_name if current_user %> Profile</h1>
+                        <h1></h1>
                         <div class="visible-xs">
                             <br />
                             <br />
                         </div>
                         <div class="col-xs-12 col-sm-10 col-sm-offset-1 round-corners">
-                            <a href="#" class="list-group-item active"> Please complete your profile</a>
+                            <a href="#" class="list-group-item active"> <%= current_user.first_name if current_user %> Profile</a>
                             <%= form_for @user, :method => :put, :html => { :multipart => true } do |f| %>
                               <% if @user.errors.any? %>
                                 <div class="error_messages">
@@ -106,8 +106,53 @@
                                 <div class="col-xs-12 col-sm-6 col-md-4">
                                     <%= f.text_field :job_title, :class=>"form-control", :placeholder=>"Job Title"  %>
                                 </div>
+                                <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                
+                                <% l_cnt = 1 %>
+                                <%= f.fields_for :spoken_languages do |ing| %>
+                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                      <%= ing.text_field :name, :class=>"form-control", :placeholder=>"spoken language"  %>
+                                    </div>
+                                    <% if l_cnt != 1 %>
+                                    <div class="col-xs-12 col-sm-6 col-md-1">  
+                                      <%= ing.check_box :_destroy %>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">  
+                                      <%= ing.label :_destroy, 'select to delete' %>
+                                    </div>  
+                                    <% end %>
+                                    <% l_cnt+=1 %>
+                                    <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                    </div>
+                                    <div class="visible-xs">
+                                        <div class="clear"></div>
+                                        <br />
+                                    </div>
+                                <% end -%>
+                                <div class="hidden-sm">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="visible-xs">
+                                    <div class="clear"></div>
+                                    <br />
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                </div> 
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <%= f.submit 'Add Language', :name => "add_spoken_language",:class => "btn btn-lg pull-left" %>
+                                </div>  
                                 <div class="clear"></div>
-                                <hr />
+                                <hr /> 
                                 <h2>
                                     <span>3</span>
                                     Social Connect 
@@ -174,25 +219,3 @@
                     <br />
                 </div>        
             </div>
-             <script>
-            $(document).ready(function () {
-                $(".cc-select").click(function () {
-                    $(this).children("input").prop("checked", "checked");
-                    $(".payment-tab").removeClass("payment-tab-show");
-                    if ($(this).hasClass("cc-1")) {
-                        $("[data-tab='cc-1']").addClass("payment-tab-show");
-                    } else if ($(this).hasClass("cc-2")) {
-                        $("[data-tab='cc-2']").addClass("payment-tab-show");
-                    } else if ($(this).hasClass("cc-3")) {
-                        $("[data-tab='cc-3']").addClass("payment-tab-show");
-                    }
-                });
-                $(".select-payment").click(function () {
-                    $(".select-payment").removeClass("selected-payment");
-                    $(this).addClass("selected-payment");
-                    $(this).find("input").prop("checked", "checked");
-                });
-            });
-
-
-        </script>

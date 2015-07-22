@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :images, :as => :event, :dependent => :destroy, finder_sql: proc { "select DISTINCT b.* FROM images b INNER JOIN
 users v ON b.event_id = v.id WHERE b.event_type ='User' AND b.event_id = #{self.id} and b.lock_version <> -1"}
 
+  has_many :spoken_languages
+  accepts_nested_attributes_for :spoken_languages, :allow_destroy => true
+
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now

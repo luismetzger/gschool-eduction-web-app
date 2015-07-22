@@ -10,11 +10,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users do
-      member do
-        get 'user_profile'
-      end
-  end
+  resources :users 
 
   resources :sessions
   
