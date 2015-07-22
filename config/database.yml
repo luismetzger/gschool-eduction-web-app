@@ -17,19 +17,19 @@
 #   password: root
 #   host: localhost
 
-# default: &default
-#   adapter: postgresql
-#   encoding: unicode
-#   pool: 5
-#   username: root
-#   password: root
-#   host: localhost
-
-development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+default: &default
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  timeout: 5000
+  username: root
+  password: root
+  host: localhost
+
+# development:
+#   adapter: sqlite3
+#   database: db/development.sqlite3
+#   pool: 5
+#   timeout: 5000
 
 # development:
 #   <<: *default
