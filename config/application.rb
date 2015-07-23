@@ -19,6 +19,8 @@ module GschoolEducationApp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.assets.prefix = '/assets'
+    config.assets.precompile += ['*.js','*.css']
   end
 end
 require 'paperclip/media_type_spoof_detector'
@@ -29,3 +31,4 @@ module Paperclip
     end
   end
 end
+WHITE_LIST_FOR_IMAGE = ["image/jpeg","image/jpg", "image/JPEG", "image/pjpeg", "application/x-shockwave-flash"]
