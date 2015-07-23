@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: adminaUTJxcL
-  password: r9VRqTEEc4VK
+  username: adminSwV5U1G
+  password: 5DIaVVHWb3Rk
   host: localhost
 
 # default: &default
