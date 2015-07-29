@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users 
+  resources :users do
+      member do
+          get 'profile'
+          get 'account'
+       end  
+  end
 
   resources :sessions
   
@@ -19,6 +24,12 @@ Rails.application.routes.draw do
   
   root 'home#index'
 
+  resources :home do
+        collection do
+          get 'dashboard'
+         end  
+  end
+          
   resources :password_resets
 
   # Example of regular route:

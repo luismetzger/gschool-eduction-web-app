@@ -69,6 +69,16 @@ class UsersController < ApplicationController
      
   end
     
+  def profile
+    @user = current_user
+    render layout: "dashboard_layout"
+  end  
+  
+  def account
+    @user = current_user
+    render layout: "dashboard_layout"
+  end  
+
   private
 
   def user_params

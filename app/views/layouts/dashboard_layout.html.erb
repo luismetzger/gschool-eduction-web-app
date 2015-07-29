@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="treehouse-layout dashboard-controller index-action logged-in ff windows" id="layout" data-featurette="treehouse-layout"  >
+  <head>
+    <title>Treehouse | Home</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="google-site-verification" content="4Ga-viQvIZUFNQXu323xpp_24RDlLooxwlpnXhinjPA" />
+    <meta name="msvalidate.01" content="F0716E70B7DD3B8C892B48891CA4B541" />
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="arXpyJ1nh1tbDVLELIxM29p18IYKwESx1BCIaEddqyU=" name="csrf-token" />
+
+
+         <%= stylesheet_link_tag 'vendor.css'%>
+         <% if controller.action_name == "dashboard" %>
+           <%= stylesheet_link_tag 'treehouse.css'%>
+          <% else %>
+          <%= stylesheet_link_tag 'treehouse-profile.css'%>
+          <% end %>
+           <%= stylesheet_link_tag 'C6FE326B1BFAEAD39.css'%>
+          <%= stylesheet_link_tag 'print.css'%>
+
+
+          <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%#= csrf_meta_tags %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/" %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+
+    <link rel="shortcut icon" href="favicon.png" />
+    <%= favicon_link_tag 'apple-touch-icon-60x60-precomposed.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
+    <%= favicon_link_tag 'apple-touch-icon-76x76-precomposed.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
+    <%= favicon_link_tag 'apple-touch-icon-120x120-precomposed.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
+    <%= favicon_link_tag 'apple-touch-icon-152x152-precomposed.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
+    
+
+
+      <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+  mixpanel.init("7b38bdec31b0d42dc60b2c77d946e5ad");</script><!-- end Mixpanel -->
+<link type="image/x-icon" rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABnElEQVQ4jY2Sv0tjQRDHF7WJhSgcAXtB8EchVx8ECwlcJfhEixMLb99MIPh2JmCag1eoldhZ2/sPiDbhzM4gaHOFiojtNSKiB2dxx+WKxOTFvBgHttn9fj/zY8eYLhGqy6OyoJJfk2i2m67TeMIT6OkQlWvNI3zd0whHkAVxe6j8p82sXAPhvRedPecPWMWR9qxVWkGlx9fGRvYHOIKsMcaA0gwqPaLwA0hpqQlApV9pZhC+s+LmjDEmjuM+EDprvdF9ApAwebdov7tprPLH4mlxqFVltNymU35OBVgpfUalAJTL9iQabc5I3Na7AKj8BEKbTl2mHVCaQuXfPQFfvZusl8wWxO0EB0E/etq253bQKgWg9O9NQChRsaC8jMp/Q+EFUDePyjX07lNj4Je9WmiUSD5QlwHl3cbdDxDaT69A6DblC78YY0wotNHli69aAL8+DkLHr0Q3oPQNlX92ADwdFtSNdaxzqC4PShepG1lv6yJUl+8wJiNXiQdC4QII3yU3MhQu5CrxwJvmZKxWomFQLoNyebUSDXfT/Qf6VJHN9a4ZPAAAAABJRU5ErkJggg==">
+
+    
+  </head>
+  <body  class="windows ff ">
+    <!-- Data Layer -->
+<script>
+  dataLayer = [{"loggedIn":true,"userId":745792,"userEmail":"luismetzger@me.com","userDisplayName":"LUIS METZGER","accountState":"active"}];
+</script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PZ55S7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZ55S7');</script>
+<!-- End Google Tag Manager -->
+
+
+    	<%= render "home/dashboardheader" %>
+      <div id="container" class="full-width" data-layout-element="container">
+      	<%= yield %>
+        <%= render "home/dashboardfooter" %>
+       </div> 
+        <div class="modal" data-featurette="course-trailer-modal" data-modal-video-autoplay="true" id="course_trailer_async_modal" style="; display: none;">
+</div>
+<div class="modal modal-points" data-featurette="modal" id="user_points_explanation" style="; display: none;">
+  <div class="grid-container">
+    <div class="grid-50 tablet-grid-50 grid-parent centered">
+      <div class="contained">
+        <button class="modal-close x-small square secondary" data-modal-close="close"><svg class="close-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12"><use xlink:href="assets/icons-91c15c7f0bde1fd321baa05087b71925.svg#close-icon"></use></svg></button>
+        <div class="grid-100 secondary-heading">
+          <h1>How points work</h1>
+        </div>
+        <div class="grid-100">
+          <p>
+            Points are earned as you complete Code Challenges, Quizzes, Courses and Tracks. They are then added to the learning topic
+            that was covered.
+          </p>
+        </div>
+        <dl>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Upvoted</strong> Forum Post</dt>
+            <dd>1 point</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Voted Best Answer</strong> Forum Post</dt>
+            <dd>12 points</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Completed</strong> Video</dt>
+            <dd>1 point</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Completed</strong> Quiz</dt>
+            <dd>6 points</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Completed</strong> Code Challenge</dt>
+            <dd>12 points</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Completed</strong> Stage</dt>
+            <dd>30 points</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Completed</strong> Course</dt>
+            <dd>60 points</dd>
+          </div>
+          <div class="grid-33 tablet-grid-50">
+            <dt><strong>Completed</strong> Track</dt>
+            <dd>150 points</dd>
+          </div>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" data-featurette="help-modal" id="contact-form-modal" style="; display: none;">
+  <div class="row">
+  <div class="eleven columns centered">
+    <div class="contained featurette" data-featurette="help-form" id="help-form">
+        <button class="modal-close x-small square secondary" data-modal-close="close"><svg class="close-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12"><use xlink:href="<%= asset_path('icons.svg') %>#close-icon"></use></svg></button>
+      <div class="row">
+        <section class="twelve columns secondary-heading">
+          <h3>Contact Support</h3>
+        </section>
+      </div>
+      <div class="row">
+        <div class="eight columns">
+          <div class="message waiting">
+            <span class="loading-spinner loading-spinner-large"><span></span></span>
+          </div>
+
+          <div class="message success">
+            <p><strong>Thanks!</strong> We'll be in touch.</p>
+          </div>
+
+          <form accept-charset="UTF-8" action="/contact" class="new_contact_form" id="contact-form" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="arXpyJ1nh1tbDVLELIxM29p18IYKwESx1BCIaEddqyU=" /></div>
+
+            <div class="message error">
+              <p>There was a small problem sending your message.</p>
+            </div>
+
+            <input id="contact_form_user_id" name="contact_form[user_id]" type="hidden" value="745792" />
+            <div class="form-item">
+              <label for="contact_form_name">Name <span>*</span></label>
+              <input id="contact_form_name" name="contact_form[name]" type="text" value="LUIS METZGER" />
+              <div class="error-message"></div>
+            </div>
+
+            <div class="form-item">
+              <label for="contact_form_email">Email <span>*</span></label>
+              <input id="contact_form_email" name="contact_form[email]" type="text" value="luismetzger@me.com" />
+              <div class="error-message"></div>
+            </div>
+
+            <fieldset class="honey-pot-field">
+              <div class="form-item">
+                <label for="contact_form_email_confirmation">Email Confirmation <span>*</span></label>
+                <input id="contact_form_email_confirmation" name="contact_form[email_confirmation]" type="text" value="" />
+                <div class="error-message"></div>
+              </div>
+            </fieldset>
+
+            <div class="form-item">
+              <label for="contact_form_message">Message <span>*</span></label>
+              <textarea class="form-element" id="contact_form_message" name="contact_form[message]" rows="2">
+</textarea>
+              <div class="error-message"></div>
+            </div>
+
+            <button class="button primary" type="submit">Send Message</button>
+</form>        </div>
+
+        <div class="four columns">
+          <div class="contact-alternative">
+            <p>Email support requests to:</p>
+            <p><a href="#" title="help@teamtreehouse.com">help@teamtreehouse.com</a></p>
+          </div>
+
+          <div class="contact-alternative">
+            <div class="secondary-heading">
+              <h5>Content questions?</h5>
+            </div>
+            <p>Don't forget you can start a discussion in the <a href="#">Forum</a>. Treehouse teachers and members are actively discussing topics from course material and other general teaching topics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+        
+    <div id="mini-profile-container"></div>
+<div id="tarp" class="modal-tarp" style="display: none;" data-featurette="tarp"></div>
+
+
+  
+
+
+
+    <%= javascript_include_tag "vendor.js" %>
+    <script>window.topicColors = {"HTML":"#39ADD1","CSS":"#3079AB","Design":"#E0AB18","JavaScript":"#C25975","Ruby":"#E15258","PHP":"#7D669E","WordPress":"#838CC7","iOS":"#53BBB4","Android":"#51B46D","Development Tools":"#637a91","Business":"#F9845B","Python":"#F092B0","Java":"#2C9676","Digital Literacy":"#c38cd4","Game Development":"#20898c"};</script>
+     <%= javascript_include_tag "application.js" %>
+    
+    
+     
+
+  </body>
+</html>

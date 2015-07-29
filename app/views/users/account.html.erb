@@ -1,0 +1,171 @@
+<aside data-layout-element="sidebar" style="display:block;">
+      <select id="nav-list-select">
+          <option value="/account" selected>Profile Info</option>
+          <option value="/account/subscription" >Enrollment</option>
+          <option value="/account/billing" >Billing History</option>
+          <option value="/account/users" >Group Members</option>
+          <option value="/account/notifications" >Email Notifications</option>
+          <option value="/account/referrals" >Referrals</option>
+          <option value="/account/privacy" >Privacy Settings</option>
+      </select>
+      <ul id="sidebar-nav">
+          <li
+            class="current "
+            >
+              <%= link_to "Profile Info", account_user_path(current_user), :onclick=>"javascript:void(0);" %> 
+          </li>
+          <li
+            class=" "
+            >
+              <a href="#">Enrollment</a>
+          </li>
+          <li
+            class=" "
+            >
+              <a href="#">Billing History</a>
+          </li>
+          <li
+            class=" "
+            >
+              <a href="#">Group Members</a>
+          </li>
+          <li
+            class=" "
+            >
+              <a href="#">Email Notifications</a>
+          </li>
+          <li
+            class=" "
+            >
+              <a href="#">Referrals</a>
+          </li>
+          <li
+            class=" "
+            >
+              <a href="#">Privacy Settings</a>
+          </li>
+      </ul>
+    
+
+  </aside>
+
+   <div id="content" class="" style="width:70% !important;">
+  
+
+  
+
+    <div class="grid-container">
+    <div class="grid-100">
+      <div class="contained">
+        <div class="grid-100">
+          <dl>
+            <!--
+              <div class="data-item">
+                <dt class="grid-100 grid-parent">
+                  <div class="avatar">
+                    <img src="https://secure.gravatar.com/avatar/b203c2fbe27dc9f5b94119bac0921845?s=200&amp;d=https%3A%2F%2Fstatic.teamtreehouse.com%2Fassets%2Fcontent%2Fdefault_avatar-da0d43531e2db7455dc68b8f80e7dc21.png&amp;r=pg" />
+                  </div>
+                </dt>
+              </div>
+            -->
+
+            <div class="data-item">
+              <dt class="grid-25 grid-parent">First Name</dt>
+              <dd class="grid-75 grid-parent"><%= @user.first_name %></dd>
+            </div>
+
+            <div class="data-item">
+              <dt class="grid-25 grid-parent">Last Name</dt>
+              <dd class="grid-75 grid-parent"> <%= @user.last_name %></dd>
+            </div>
+
+            <div class="data-item">
+              <dt class="grid-25 grid-parent">Email Address</dt>
+              <dd class="grid-75 grid-parent"><%= @user.email %></dd>
+            </div>
+
+            <div class="data-item">
+              <dt class="grid-25 grid-parent">Password</dt>
+              <dd class="grid-75 grid-parent">&#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226; &#8226;</dd>
+            </div>
+
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Treehouse Profile URL</dt>
+                <dd class="grid-75 grid-parent"><span class="light"><%= @user.website_url %>/</span><%= @user.first_name %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">About You</dt>
+                <dd class="grid-75 grid-parent"><%= @user.about_you %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Company</dt>
+                <dd class="grid-75 grid-parent"><%= @user.company_name %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Job</dt>
+                <dd class="grid-75 grid-parent"><%= @user.job_title %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Billing Address</dt>
+                <dd class="grid-75 grid-parent"><%= @user.billing_address %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Country</dt>
+                <dd class="grid-75 grid-parent"><%= @user.country %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Location</dt>
+                <dd class="grid-75 grid-parent"><%= @user.location %></dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Looking for work?</dt>
+                <dd class="grid-75 grid-parent">
+                  <%= @user.open_for_work %>
+                </dd>
+              </div>
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">Spoken Languages</dt>
+                <dd class="grid-75 grid-parent"><%= @user.spoken_languages.map(&:name).join(",") %> </dd>
+              </div>
+
+
+
+
+
+
+              <div class="data-item">
+                <dt class="grid-25 grid-parent">GitHub Profile</dt>
+                <dd class="grid-75 grid-parent"><a href="#"><%= @user.github_account %></a></dd>
+              </div>
+
+
+              <div class="data-item last">
+                <dt class="grid-25 grid-parent">LinkedIn Profile</dt>
+                <dd class="grid-75 grid-parent"><a href="#"> <%= @user.linkedin_account %></a></dd>
+              </div>
+
+              <div class="data-item last">
+                <dt class="grid-25 grid-parent">Website</dt>
+                <dd class="grid-75 grid-parent"><a href="#"><%= @user.website_url %></a></dd>
+              </div>
+
+          </dl>
+          <div class="form-footer">
+             <%= link_to 'Edit Account', edit_user_path(@user), :class => "button primary" %>
+            <a class="button secondary" href="#">Change Password</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
