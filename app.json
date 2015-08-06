@@ -1,0 +1,19 @@
+{
+  "name":"gschool-eduction-web-app",
+  "description":"Update front end",
+  "scripts":{},
+  "env":{
+    "LANG":{
+      "required":true
+    },
+    "RACK_ENV":{
+      "required":true
+    },
+    "RAILS_ENV":{
+      "required":true
+    }
+  },
+  "addons":[
+    "heroku-postgresql"
+  ]
+}
