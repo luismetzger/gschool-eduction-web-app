@@ -17,9 +17,33 @@
 #   password: root
 #   host: localhost
 
+<<<<<<< Updated upstream
 default: &default
   adapter: postgresql
   encoding: unicode
+=======
+<<<<<<< Updated upstream
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
+#   username: root
+#   password: root
+#   host: localhost
+=======
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: luismetzger
+  password: flare1mill
+  host: localhost
+>>>>>>> Stashed changes
+
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+>>>>>>> Stashed changes
   pool: 5
   username: jovaynenbrizdy
   password: JvlPN-18NaRYkGU-jHvJZL5zoC
